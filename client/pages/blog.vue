@@ -1,17 +1,21 @@
 <template>
     <h1>Блог</h1>
     <main>
-        <div class="posts">
-            <article v-for="(post, index) in posts" :key="post.id">
-                <h3>{{ post.title }}</h3>
-                <div class="link">
-                    <img :src="base_url + post.img[0].url" :alt=post.img[0].alternativeText>
-                    <NuxtLink :to="'/post/' + post.documentId">Подробнее</NuxtLink>
-                </div>
-                <p>{{ post.desc }}</p>
-            </article>
-        </div>
-
+        <article v-for="(post, index) in posts" :key="post.id">
+            <h3>{{ post.title }}</h3>
+            <div class="link">
+                <img :src="base_url + post.img[0].url" :alt=post.img[0].alternativeText>
+                <NuxtLink :style="'background:' + post.categories[0].url" :to="'/post/' + post.documentId">Подробнее
+                </NuxtLink>
+            </div>
+            <p>{{ post.desc }}</p>
+            <ul class="tag">
+                <li v-for="(category, index) in post.categories" :key="category.id">
+                    <NuxtLink :style="'background:' + post.categories[index].bg"
+                        :to="'/category' + post.categories[0].documentId">{{ category.title }}</NuxtLink>
+                </li>
+            </ul>
+        </article>
     </main>
 </template>
 
@@ -25,17 +29,14 @@ const base_url = "http://localhost:1337"
 
 
 <style scoped>
-
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax (250px, 1fr));
-
-}
-
-.posts {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    /* grid-template-columns: repeat(auto-fit, minmax (250px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-rows: repeat(4, 1fr); */
+    gap: 40px;
+    padding: 40px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -63,6 +64,7 @@ main {
 }
 
 article {
+    width: 300px;
     background-color: #f5f5f5;
     padding: 10px;
 
@@ -101,4 +103,9 @@ article a:hover {
     color: red;
 }
 
+
+.link {
+    position: relative;
+    width: 300px;
+}
 </style>

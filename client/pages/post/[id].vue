@@ -74,7 +74,7 @@ main {
 }
 
 main img {
-    width: 100%;
+    width: 50%;
     height: 320px;
     object-fit: cover;
 }
