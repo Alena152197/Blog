@@ -10,8 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "autoprefixer": "^10.4.20",
+    "flowbite": "^2.5.2",
     "markdown-it": "^14.1.0",
     "nuxt": "^3.13.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
     "vue": "latest",
     "vue-router": "latest"
   }
