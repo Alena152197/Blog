@@ -4,7 +4,6 @@
   <NuxtPage />
   <Up />
   <Footer />
-
 </template>
 
 <script setup>
@@ -13,7 +12,6 @@ const api = await $fetch(`${base}/api/config?populate=*`)
 const config = api.data
 
 useHead({
-  
   title: config.title,
   meta: [
     { name: 'description', content: config.desc },
@@ -26,4 +24,5 @@ useHead({
     class: 'container mx-auto'
   },
 })
+
 </script>
